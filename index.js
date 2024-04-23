@@ -31,7 +31,7 @@ const PORT = 80;
 const userSocketIDs = new Map();
 const onlineUsers = new Set();
 
-app.use(cors({
+const corsOptions = {
     origin: [
         "https://jhamayank02.github.io/"
       ],
@@ -39,7 +39,10 @@ app.use(cors({
       enablePreflight: true,
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
-}))
+}
+
+app.use(cors());
+app.options('*', cors(corsOptions));
 // app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
 // app.use(cors({credentials: true, SameSite: "Lax", origin: 'http://localhost:3000'}));
 // app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
