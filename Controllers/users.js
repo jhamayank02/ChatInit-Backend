@@ -355,7 +355,6 @@ const myChatsAndGroups = TryCatch(async (req, res) => {
         chat.participants = chat.participants.filter(participant => participant._id.toString() !== req.user.id.toString());
         transformedChats.push(chat);
     });
-    console.log(transformedChats);
 
     res.status(200).json({
         status: 200,
