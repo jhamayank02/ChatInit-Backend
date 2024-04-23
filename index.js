@@ -33,7 +33,7 @@ const onlineUsers = new Set();
 
 app.use(cors({
     origin: [
-        "https://jhamayank02.github.io/ChatInit/"
+        "https://jhamayank02.github.io/"
       ],
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
