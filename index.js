@@ -35,7 +35,7 @@ app.use(cors({
     origin: [
         "https://jhamayank02.github.io/"
       ],
-      allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
+      allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
       enablePreflight: true,
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
