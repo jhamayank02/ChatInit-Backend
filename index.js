@@ -32,7 +32,7 @@ const userSocketIDs = new Map();
 const onlineUsers = new Set();
 
 // app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
-app.use(cors({credentials: true, origin: '*'}));
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 // app.use(formData.parse());
