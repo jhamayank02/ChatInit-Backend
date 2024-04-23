@@ -32,7 +32,8 @@ const userSocketIDs = new Map();
 const onlineUsers = new Set();
 
 // app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
-app.use(cors({credentials: true, sameSite: "none", origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true, SameSite: "Lax", origin: 'http://localhost:3000'}));
+// app.use(cors({credentials: true, SameSite: "None", origin: 'http://localhost:3000'}));
 // app.set("trust proxy", 1);
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
