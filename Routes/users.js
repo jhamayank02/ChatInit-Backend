@@ -20,9 +20,9 @@ router.post('/remove-from-group', removePersonFromTheGroupGroupValidator(), vali
 
 router.post('/leave-group', leaveGroupValidator(), validateHandler, leaveGroup);
 
-router.get('/my-chats', unfriendValidator(), validateHandler, myChatsAndGroups);
+router.get('/my-chats', myChatsAndGroups);
 
-router.post('/unfriend', unfriend);
+router.post('/unfriend', unfriendValidator(), validateHandler, unfriend);
 
 router.post('/user-data', userData);
 
