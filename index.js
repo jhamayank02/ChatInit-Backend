@@ -4,7 +4,8 @@ const {createServer} = require('http');
 
 const app = express();
 const server = createServer(app);
-const io = new Server(server, {cors: {origin: "http://localhost:3000", credentials: true}});
+// const io = new Server(server, {cors: {origin: "http://localhost:3000", credentials: true}});
+const io = new Server(server, {cors: {origin: "https://chatinit-backend.onrender.com", credentials: true}});
 app.set("io", io);
 
 const cookieParser = require('cookie-parser');
@@ -31,7 +32,8 @@ const PORT = 80;
 const userSocketIDs = new Map();
 const onlineUsers = new Set();
 
-app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
+// app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
+app.use(cors({credentials: true, origin: 'https://chatinit-backend.onrender.com', exposedHeaders: ['Set-Cookie']}));
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 // app.use(formData.parse());
@@ -57,7 +59,7 @@ io.on("connection", (socket) => {
     userSocketIDs.set(user._id.toString(), socket.id);
 
     // console.log("A user connected", socket.id);
-    console.log(userSocketIDs);
+    // console.log(userSocketIDs);
 
     socket.on(NEW_MESSAGE, async ({chatId, participants, message})=>{
 
@@ -91,14 +93,14 @@ io.on("connection", (socket) => {
             await chatModel.findOneAndUpdate({_id: chatId}, {latestMessage: latestMessage._id});
         }
         catch(error){
-            console.log(error.message);
+            // console.log(error.message);
         }
     })
 
     socket.on(CHAT_JOINED, ({participants, userId})=>{
         onlineUsers.add(userId.toString());
 
-        console.log(onlineUsers)
+        // console.log(onlineUsers)
         const participantsSockets = getSockets(participants);
         socket.to(participantsSockets).emit(ONLINE_USERS, Array.from(onlineUsers));
     })
@@ -106,7 +108,7 @@ io.on("connection", (socket) => {
     socket.on(CHAT_LEFT, ({userId, participants})=>{
         onlineUsers.delete(userId.toString());
 
-        console.log(onlineUsers)
+        // console.log(onlineUsers)
         const participantsSockets = getSockets(participants);
         socket.to(participantsSockets).emit(ONLINE_USERS, Array.from(onlineUsers));
     })
@@ -145,13 +147,13 @@ io.on("connection", (socket) => {
 
     socket.on("disconnect", ()=>{
         userSocketIDs.delete(user._id.toString());
-        console.log("User disconnected")
+        // console.log("User disconnected")
     })
 })
 
 server.listen(PORT, ()=>{
     connectDB();
-    console.log("Server started on port " + PORT + "...");
+    // console.log("Server started on port " + PORT + "...");
 })
 
 // module.exports = {userSocketIDs};
