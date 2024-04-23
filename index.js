@@ -4,8 +4,7 @@ const {createServer} = require('http');
 
 const app = express();
 const server = createServer(app);
-// const io = new Server(server, {cors: {origin: "http://localhost:3000", credentials: true}});
-const io = new Server(server, {cors: {origin: "https://chatinit-backend.onrender.com", credentials: true}});
+const io = new Server(server, {cors: {origin: "http://localhost:3000", credentials: true}});
 app.set("io", io);
 
 const cookieParser = require('cookie-parser');
@@ -32,8 +31,7 @@ const PORT = 80;
 const userSocketIDs = new Map();
 const onlineUsers = new Set();
 
-// app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
-app.use(cors({credentials: true, origin: 'https://chatinit-backend.onrender.com', exposedHeaders: ['Set-Cookie']}));
+app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 // app.use(formData.parse());
