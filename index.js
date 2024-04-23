@@ -35,6 +35,7 @@ app.use(cors({
     origin: [
         "https://jhamayank02.github.io/"
       ],
+      allowedHeaders: ['Content-Type', 'Authorization'],
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
 }))
