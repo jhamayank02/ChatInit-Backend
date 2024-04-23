@@ -41,7 +41,7 @@ const corsOptions = {
       credentials: true,
 }
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 // app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
 // app.use(cors({credentials: true, SameSite: "Lax", origin: 'http://localhost:3000'}));
