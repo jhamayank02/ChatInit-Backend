@@ -244,6 +244,7 @@ const generateOTP = () => {
 }
 
 const isLoggedIn = async (req, res) => {
+    console.log(req.cookies)
     const uid = req.cookies?.uid;
 
     try {
