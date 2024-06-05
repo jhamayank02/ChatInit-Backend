@@ -4,7 +4,8 @@ const {createServer} = require('http');
 
 const app = express();
 const server = createServer(app);
-const io = new Server(server, {cors: {origin: "http://localhost:3000", credentials: true}});
+// const io = new Server(server, {cors: {origin: "http://localhost:3000", credentials: true}});
+const io = new Server(server, {cors: {credentials: true}});
 app.set("io", io);
 
 const cookieParser = require('cookie-parser');
@@ -31,23 +32,19 @@ const PORT = 80;
 const userSocketIDs = new Map();
 const onlineUsers = new Set();
 
-const corsOptions = {
-    origin: [
-        "https://jhamayank02.github.io/"
-      ],
-      allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
-      enablePreflight: true,
-      methods: ["GET", "POST", "PUT", "DELETE"],
-      credentials: true,
-}
+// const corsOptions = {
+//     origin: [
+//         "https://jhamayank02.github.io/"
+//       ],
+//       allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
+//       enablePreflight: true,
+//       methods: ["GET", "POST", "PUT", "DELETE"],
+//       credentials: true,
+// }
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
-// app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
-// app.use(cors({credentials: true, SameSite: "Lax", origin: 'http://localhost:3000'}));
-// app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
-// app.use(cors({credentials: true, SameSite: "None", origin: 'http://localhost:3000'}));
-// app.set("trust proxy", 1);
+// app.use(cors(corsOptions));
+app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
+app.use(cors({credentials: true}))
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 // app.use(formData.parse());
