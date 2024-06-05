@@ -43,7 +43,7 @@ const onlineUsers = new Set();
 // }
 
 // app.use(cors(corsOptions));
-app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
+// app.use(cors({credentials: true, origin: 'http://localhost:3000', exposedHeaders: ['Set-Cookie']}));
 app.use(cors({credentials: true}))
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
